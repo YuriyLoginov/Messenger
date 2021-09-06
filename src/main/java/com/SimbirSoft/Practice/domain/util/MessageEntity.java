@@ -9,12 +9,21 @@ public class MessageEntity {
     private Long id;
     private String text;
     private String tag;
+    private String fileName;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
     public MessageEntity() {
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 
     public Long getId() {

@@ -12,11 +12,20 @@ public class UserEntity {
     private String password;
     private String firstName;
     private String lastName;
+    private String email;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<MessageEntity> message;
 
     public UserEntity() {
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getFirstName() {
