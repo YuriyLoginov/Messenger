@@ -9,7 +9,7 @@ import java.util.Date;
 public class BlockList {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
@@ -23,6 +23,14 @@ public class BlockList {
     private java.util.Date time;
 
     public BlockList() {
+    }
+
+    public User getUserId() {
+        return UserId;
+    }
+
+    public void setUserId(User userId) {
+        UserId = userId;
     }
 
     public Long getId() {

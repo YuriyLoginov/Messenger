@@ -12,7 +12,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "UserId")
+/*    @OneToMany(fetch = FetchType.LAZY, mappedBy = "sender")
+    private List<Chat> chatsSend;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "recipient")
+    private List<Chat> chatsRec;*/
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "UserId")
     private List<BlockList> bloc;
 
     private String username;

@@ -6,14 +6,20 @@ import javax.persistence.*;
 public class Chat {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long sender;
+/*    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "usr_id")
+    private User sender;
 
-    private Long recipient;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "usr_id")
+    private User recipient;*/
 
-    private char message;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "message_id")
+    private Message message;
 
     public Chat() {
     }
@@ -26,27 +32,4 @@ public class Chat {
         this.id = id;
     }
 
-    public Long getSender() {
-        return sender;
-    }
-
-    public void setSender(Long sender) {
-        this.sender = sender;
-    }
-
-    public Long getRecipient() {
-        return recipient;
-    }
-
-    public void setRecipient(Long recipient) {
-        this.recipient = recipient;
-    }
-
-    public char getMessage() {
-        return message;
-    }
-
-    public void setMessage(char message) {
-        this.message = message;
-    }
 }
