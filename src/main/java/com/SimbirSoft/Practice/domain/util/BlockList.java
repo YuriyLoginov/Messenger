@@ -5,7 +5,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table (name = "blockList")
+@Table (name = "block_list")
 public class BlockList {
 
     @Id

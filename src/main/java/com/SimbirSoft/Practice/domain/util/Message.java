@@ -12,11 +12,12 @@ public class Message {
     private String text;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "authorId")
+    @JoinColumn(name = "author_id")
     private User author;
 
     public Message() {
     }
+
 
     public User getAuthor() {
         return author;
