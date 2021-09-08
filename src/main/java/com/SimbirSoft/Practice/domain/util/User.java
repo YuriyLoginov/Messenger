@@ -1,9 +1,12 @@
 package com.SimbirSoft.Practice.domain.util;
 
+import com.SimbirSoft.Practice.domain.util.enums.Role;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "usr")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +21,9 @@ public class User {
     private String lastName;
     private String email;
 
-    private String role;
+    @Column(name = "role")
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     private Boolean valid;
 
@@ -74,14 +79,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
     }
 
     public Boolean getValid() {
