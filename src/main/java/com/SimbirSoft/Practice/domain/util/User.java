@@ -12,8 +12,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-/*    @OneToMany(fetch = FetchType.EAGER, mappedBy = "UserId")
-    private List<BlockList> bloc;*/
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "UserId")
+    private List<BlockList> bloc;
 
     private String username;
     private String password;
@@ -31,6 +31,14 @@ public class User {
     private List<Message> message;
 
     public User() {
+    }
+
+    public List<BlockList> getBloc() {
+        return bloc;
+    }
+
+    public void setBloc(List<BlockList> bloc) {
+        this.bloc = bloc;
     }
 
     public Role getRole() {

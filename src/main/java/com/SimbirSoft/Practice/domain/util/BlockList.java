@@ -12,9 +12,9 @@ public class BlockList {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-/*    @ManyToOne
-    @JoinColumn(name = "id")
-    private User UserId;*/
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User UserId;
 
     @Temporal(TemporalType.TIMESTAMP)
     private java.util.Date startTime;
