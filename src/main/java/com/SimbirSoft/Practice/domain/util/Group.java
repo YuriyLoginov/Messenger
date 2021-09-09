@@ -11,12 +11,17 @@ public class Group {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-    private Long creator;
+    @ManyToOne
+    @JoinColumn(name = "creator_id")
+    private User creator;
 
     private String name;
 
-    private Long users;
+    @ManyToOne
+    @JoinColumn(name = "users")
+    private User users;
 
-    private Long message;
+    @ManyToOne
+    @JoinColumn(name = "message")
+    private Message message;
 }
