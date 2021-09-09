@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "block_list")
