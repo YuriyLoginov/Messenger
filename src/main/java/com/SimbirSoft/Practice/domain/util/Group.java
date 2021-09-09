@@ -1,10 +1,15 @@
 package com.SimbirSoft.Practice.domain.util;
 
 
+import lombok.Builder;
+import lombok.Data;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "groups")
+@Data
+@Builder
 public class Group {
 
     @Id

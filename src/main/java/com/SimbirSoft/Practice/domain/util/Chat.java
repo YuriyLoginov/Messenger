@@ -1,8 +1,13 @@
 package com.SimbirSoft.Practice.domain.util;
 
+import lombok.Builder;
+import lombok.Data;
+
 import javax.persistence.*;
 
 @Entity
+@Data
+@Builder
 public class Chat {
 
     @Id

@@ -1,9 +1,14 @@
 package com.SimbirSoft.Practice.domain.util;
 
+import lombok.Builder;
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Data
+@Builder
 public class Message {
 
     @Id
