@@ -7,7 +7,6 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Builder
 public class Chat {
 
     @Id

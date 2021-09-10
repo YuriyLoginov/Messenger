@@ -9,7 +9,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "block_list")
 @Data
-@Builder
 public class BlockList {
 
     @Id

@@ -1,7 +1,6 @@
 package com.SimbirSoft.Practice.domain.util;
 
 import com.SimbirSoft.Practice.domain.util.enums.Role;
-import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -10,7 +9,6 @@ import java.util.List;
 @Entity
 @Table(name = "usr")
 @Data
-@Builder
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

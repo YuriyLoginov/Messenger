@@ -9,7 +9,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "groups")
 @Data
-@Builder
 public class Group {
 
     @Id
