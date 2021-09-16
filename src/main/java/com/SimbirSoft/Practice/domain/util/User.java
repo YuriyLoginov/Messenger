@@ -43,5 +43,4 @@ public class User {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "users")
     private List<Group> userGroup;
-
 }

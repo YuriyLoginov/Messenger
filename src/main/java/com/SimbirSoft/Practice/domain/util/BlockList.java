@@ -1,10 +1,9 @@
 package com.SimbirSoft.Practice.domain.util;
 
-
-import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "block_list")
@@ -24,5 +23,4 @@ public class BlockList {
 
     @Temporal(TemporalType.TIME)
     private java.util.Date time;
-
 }

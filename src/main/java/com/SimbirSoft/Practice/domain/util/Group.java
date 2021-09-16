@@ -1,7 +1,5 @@
 package com.SimbirSoft.Practice.domain.util;
 
-
-import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
