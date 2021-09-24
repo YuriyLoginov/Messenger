@@ -1,17 +1,29 @@
 package com.SimbirSoft.Practice.controller;
 
+import com.SimbirSoft.Practice.dto.message.MessageDto;
+import com.SimbirSoft.Practice.dto.message.ResponseMessageDto;
+import com.SimbirSoft.Practice.model.User;
 import com.SimbirSoft.Practice.service.MessageService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+import javax.servlet.http.HttpServletRequest;
+
+@RestController
 @RequestMapping("/message")
+@AllArgsConstructor
 public class MessageController {
 
-    @Autowired
-    private MessageService messageService;
+    private final MessageService messageService;
 
 
+    @PostMapping
+    @ResponseBody
+    public ResponseEntity<ResponseMessageDto> sendMessage(@RequestBody MessageDto messageDto, HttpServletRequest request) {
+        User user = (User) request.getAttribute("user");
+        messageService.save(messageDto, user);
+        return ResponseEntity.ok(new ResponseMessageDto("Сообщение отправлено!"));
+    }
 
 }

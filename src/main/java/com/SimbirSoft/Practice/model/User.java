@@ -1,7 +1,10 @@
-package com.SimbirSoft.Practice.domain.util;
+package com.SimbirSoft.Practice.model;
 
-import com.SimbirSoft.Practice.domain.util.enums.Role;
+import com.SimbirSoft.Practice.model.enums.Role;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
@@ -9,16 +12,13 @@ import java.util.List;
 @Entity
 @Table(name = "usr")
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "sender")
-    private List<Chat> chatsSend;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "recipient")
-    private List<Chat> chatsRec;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "UserId")
     private List<BlockList> bloc;
@@ -38,9 +38,7 @@ public class User {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "author")
     private List<Message> message;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "creator")
-    private List<Group> creatorGroups;
+    @ManyToMany(mappedBy = "users", fetch = FetchType.EAGER)
+    private List<Room> rooms;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "users")
-    private List<Group> userGroup;
 }

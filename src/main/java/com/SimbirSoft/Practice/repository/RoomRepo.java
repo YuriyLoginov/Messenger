@@ -1,10 +1,10 @@
 package com.SimbirSoft.Practice.repository;
 
-import com.SimbirSoft.Practice.model.BlockList;
+import com.SimbirSoft.Practice.model.Room;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface BlocListRepo extends JpaRepository<BlockList, Long> {
+public interface RoomRepo extends JpaRepository<Room, Long> {
 
 }

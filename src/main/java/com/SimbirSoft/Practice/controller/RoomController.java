@@ -1,16 +1,16 @@
 package com.SimbirSoft.Practice.controller;
 
-import com.SimbirSoft.Practice.service.GroupService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.SimbirSoft.Practice.service.RoomService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/group")
-public class GroupController {
+@AllArgsConstructor
+public class RoomController {
 
-    @Autowired
-    private GroupService groupService;
+    private final RoomService roomService;
 
 
 }

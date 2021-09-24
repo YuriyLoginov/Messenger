@@ -1,10 +1,10 @@
 package com.SimbirSoft.Practice.repository;
 
-import com.SimbirSoft.Practice.domain.util.User;
-import org.springframework.data.repository.CrudRepository;
+import com.SimbirSoft.Practice.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepo extends CrudRepository<User, Long> {
-User findByUsername(String username);
+public interface UserRepo extends JpaRepository<User, Long> {
+
 }

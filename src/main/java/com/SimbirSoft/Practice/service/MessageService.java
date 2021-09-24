@@ -1,11 +1,10 @@
 package com.SimbirSoft.Practice.service;
 
-import com.SimbirSoft.Practice.repository.MessageRepo;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.SimbirSoft.Practice.dto.message.MessageDto;
+import com.SimbirSoft.Practice.model.User;
 
-@Service
 public class MessageService {
-    @Autowired
-    private MessageRepo messageRepo;
+
+    public void save(MessageDto messageDto, User user) {
+    }
 }

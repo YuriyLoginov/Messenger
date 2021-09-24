@@ -1,13 +1,19 @@
-package com.SimbirSoft.Practice.domain.util;
+package com.SimbirSoft.Practice.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
+
 
 @Entity
 @Table(name = "block_list")
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class BlockList {
 
     @Id
