@@ -27,13 +27,10 @@ public class User {
     private String password;
     private String firstName;
     private String lastName;
-    private String email;
 
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
     private Role role;
-
-    private Boolean valid;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "author")
     private List<Message> message;
