@@ -15,4 +15,6 @@ public interface UserService {
     TokenDto login(LoginForm loginForm);
 
     TokenDto update(UpdateForm updateForm, User user);
+
+    User getByAuthToken(String token);
 }
