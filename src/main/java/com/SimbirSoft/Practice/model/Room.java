@@ -1,31 +1,32 @@
 package com.SimbirSoft.Practice.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-@Entity
-@Table(name = "room")
-@Data
-@Builder
-@AllArgsConstructor
+@Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Entity
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Room {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @EqualsAndHashCode.Include
     private Long id;
 
+    @Column(nullable = false, unique = true)
+    @EqualsAndHashCode.Include
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "owner_user_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "owner_user_id", nullable = false)
     private User owner;
 
     @ManyToMany
-    private List<User> users;
+    private Set<User> participants = new HashSet<>();
 }

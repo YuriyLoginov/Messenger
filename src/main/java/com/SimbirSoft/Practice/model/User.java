@@ -1,13 +1,11 @@
 package com.SimbirSoft.Practice.model;
 
 import com.SimbirSoft.Practice.model.enums.Role;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "usr")
@@ -17,25 +15,22 @@ import java.util.List;
 @NoArgsConstructor
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @EqualsAndHashCode.Include
     private Long id;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "UserId")
-    private List<BlockList> bloc;
-
+    @Column(nullable = false, unique = true)
+    @EqualsAndHashCode.Include
     private String username;
-    private String password;
-    private String firstName;
-    private String lastName;
 
-    @Column(name = "role")
+    @Column(nullable = false)
+    private String password;
+
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "author")
-    private List<Message> message;
-
-    @ManyToMany(mappedBy = "users", fetch = FetchType.EAGER)
-    private List<Room> rooms;
+    @ManyToMany(mappedBy = "participants", fetch = FetchType.EAGER)
+    private Set<Room> rooms = new HashSet<>();
 
 }
