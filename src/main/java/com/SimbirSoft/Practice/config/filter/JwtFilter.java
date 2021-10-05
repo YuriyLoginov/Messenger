@@ -25,12 +25,14 @@ import static org.springframework.util.StringUtils.hasText;
 @Component
 @AllArgsConstructor
 public class JwtFilter extends GenericFilterBean {
+
     private static final String AUTHORIZATION = "Authorization";
+
     private final UserService userService;
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException, IOException, ServletException {
-        if(servletRequest.getAttribute("user") != null) {
+        if (servletRequest.getAttribute("user") != null) {
             filterChain.doFilter(servletRequest, servletResponse);
             return;
         }
@@ -41,7 +43,8 @@ public class JwtFilter extends GenericFilterBean {
             Role authorities = getAuthorities(user);
             UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(user, null, Collections.singleton(authorities));
             SecurityContextHolder.getContext().setAuthentication(auth);
-        } catch (InvalidTokenException | NotFoundException ignored) {}
+        } catch (InvalidTokenException | NotFoundException ignored) {
+        }
         filterChain.doFilter(servletRequest, servletResponse);
     }
 

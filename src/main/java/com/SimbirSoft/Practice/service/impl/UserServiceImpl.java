@@ -68,7 +68,7 @@ public class UserServiceImpl implements UserService {
         User user = User.builder()
                 .username(form.getUsername())
                 .password(form.getPassword())
-                .role(Role.USER)
+                .role(Role.ROLE_USER)
                 .build();
         User savedUser = userRepository.save(user);
         return new TokenDto(jwtHelper.generateToken(savedUser));

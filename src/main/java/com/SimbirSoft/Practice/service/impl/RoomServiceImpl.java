@@ -45,7 +45,7 @@ public class RoomServiceImpl implements RoomService {
     public void delete(RoomNameDto roomNameDto, User user) {
         Room roomToDelete = (roomRepo.findByName(roomNameDto.getName()))
                 .orElseThrow(() -> new NotFoundException("Комната с именем " + roomNameDto.getName() + " не найдена"));
-        if (user.getRole() == Role.ADMIN || user.getId().equals(roomToDelete.getOwner().getId())) {
+        if (user.getRole() == Role.ROLE_ADMIN || user.getId().equals(roomToDelete.getOwner().getId())) {
             roomRepo.delete(roomToDelete);
         } else {
             throw new ForbiddenActionExceptions("Пользователь не имеет прав на удаление этой комнаты");
@@ -61,7 +61,7 @@ public class RoomServiceImpl implements RoomService {
         if (roomToCheckIfExists.isPresent()) {
             throw new AlreadyExistException("Комната с именем " + roomRenameDto.getNewName() + " уже существует");
         }
-        if (user.getRole() == Role.ADMIN || user.equals(roomToRename.getOwner())) {
+        if (user.getRole() == Role.ROLE_ADMIN || user.equals(roomToRename.getOwner())) {
             roomToRename.setName(roomRenameDto.getNewName());
             roomRepo.save(roomToRename);
         } else {
