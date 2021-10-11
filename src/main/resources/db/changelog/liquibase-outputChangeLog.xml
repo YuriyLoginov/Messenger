@@ -1,0 +1,108 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+                   http://www.liquibase.org/xml/ns/pro
+                   http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd
+                   http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet author="Yuriy" id="1623219654274-1">
+        <createTable tableName="room">
+
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="room_pkey"/>
+            </column>
+
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="owner_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+    </changeSet>
+    <changeSet author="Yuriy" id="1623219654274-2">
+
+        <createTable tableName="users">
+
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="users_pkey"/>
+            </column>
+
+            <column name="password" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="username" type="VARCHAR(80)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="role" type="VARCHAR(255)"/>
+
+        </createTable>
+
+    </changeSet>
+
+    <changeSet author="Yuriy" id="1623219654274-3">
+
+        <createTable tableName="room_participants">
+
+            <column name="rooms_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="room_participants_pkey"/>
+            </column>
+
+            <column name="participants_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="room_participants_pkey"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+    <changeSet author="Yuriy" id="1623219654274-4">
+
+        <createTable tableName="message">
+
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="message_pkey"/>
+            </column>
+
+            <column name="message" type="VARCHAR(1000)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+    </changeSet>
+    <changeSet author="Yuriy" id="1623219654274-5">
+        <addUniqueConstraint columnNames="name" constraintName="uk_4l8mm4fqoos6fcbx76rvqxer" tableName="room"/>
+    </changeSet>
+
+    <changeSet author="Yuriy" id="1623219654274-6">
+        <addUniqueConstraint columnNames="username" constraintName="uk_r43af9ap4edm43mmtq01oddj6" tableName="users"/>
+    </changeSet>
+
+    <changeSet author="Yuriy" id="1623219654274-7">
+        <addForeignKeyConstraint baseColumnNames="rooms_id" baseTableName="room_participants" constraintName="fkg7g9c69nktdxser0vygjfeagk" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="room" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Yuriy" id="1623219654274-8">
+        <addForeignKeyConstraint baseColumnNames="participants_id" baseTableName="room_participants" constraintName="fkj421pq9ang2oqb6wefxlot98r" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <changeSet author="Yuriy" id="1623219654274-10">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="message" constraintName="fkpdrb79dg3bgym7pydlf9k3p1n" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <changeSet author="Yuriy" id="1623219654274-11">
+        <addForeignKeyConstraint baseColumnNames="owner_user_id" baseTableName="room" constraintName="fkay3364f1tshease44jxw93u0p" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+</databaseChangeLog>

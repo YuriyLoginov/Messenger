@@ -1,0 +1,1 @@
+insert into usr(id, username, password, role) values (100, 'Gilgamesh', 'Enkidu', 'ROLE_USER');

@@ -19,7 +19,7 @@ public class KafkaProducerConfig {
     @Bean
     public ProducerFactory<String, MessageMetricsDto> producerFactory() {
         Map<String, Object> configProps = new HashMap<>();
-        String bootstrapAddress = "localhost:29092";
+        String bootstrapAddress = "localhost:8080";
         configProps.put(
                 ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,
                 bootstrapAddress);

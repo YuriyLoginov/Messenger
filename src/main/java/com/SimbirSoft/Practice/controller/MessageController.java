@@ -20,7 +20,7 @@ public class MessageController {
 
     @PostMapping
     @ResponseBody
-    public ResponseEntity<ResponseMessageDto> sendMessage(@RequestBody MessageDto messageDto, HttpServletRequest request) {
+    public ResponseEntity<ResponseMessageDto> sendMessage(@ModelAttribute MessageDto messageDto, HttpServletRequest request) {
         User user = (User) request.getAttribute("user");
         messageService.save(messageDto, user);
         return ResponseEntity.ok(new ResponseMessageDto("Сообщение отправлено!"));

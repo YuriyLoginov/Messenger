@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-public class KafkaConfig {
+public class KafkaTopicConfig {
 
     @Bean
     public KafkaAdmin kafkaAdmin() {
