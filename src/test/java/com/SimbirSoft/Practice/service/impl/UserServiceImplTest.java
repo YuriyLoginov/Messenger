@@ -47,13 +47,13 @@ class UserServiceImplTest {
 
     @BeforeEach
     void setUp() {
-        token = "Enuma Elish";
-        loginForm = new LoginForm("Gilgamesh", "Enkidu");
+        token = "123 321";
+        loginForm = new LoginForm("QWERTY", "qwerty");
         updateForm = new UpdateForm("TestUsername", "testpass");
-        registerForm = new RegisterForm("Gilgamesh", "Enkidu");
+        registerForm = new RegisterForm("QWERTY", "qwerty");
         user = User.builder()
-                .username("Gilgamesh")
-                .password("Enkidu")
+                .username("QWERTY")
+                .password("qwerty")
                 .build();
 
     }
@@ -62,14 +62,14 @@ class UserServiceImplTest {
     void canGetUserByCorrectAuthToken() {
         //given
         User expectedUser = User.builder()
-                .username("Gilgamesh")
-                .password("Enkidu")
+                .username("QWERTY")
+                .password("qwerty")
                 .build();
         //when
         doReturn(true).when(jwtHelper).validateToken(token);
-        doReturn("Gilgamesh").when(jwtHelper).getUsernameFromToken(token);
+        doReturn("QWERTY").when(jwtHelper).getUsernameFromToken(token);
         doReturn(Optional.of(expectedUser)).when(userRepository).findByUsername(anyString());
-        doReturn("Enkidu").when(jwtHelper).getPasswordFromToken(token);
+        doReturn("qwerty").when(jwtHelper).getPasswordFromToken(token);
         User userToAssert = userService.getByAuthToken(token);
         //then
         assertThat(userToAssert).isEqualTo(expectedUser);
@@ -85,7 +85,7 @@ class UserServiceImplTest {
     void throwsExceptionWhenGettingUserByToken_AndUserWithThatUsernameIsNotPresent() {
         //when
         doReturn(true).when(jwtHelper).validateToken(token);
-        doReturn("Gilgamesh").when(jwtHelper).getUsernameFromToken(token);
+        doReturn("QWERTY").when(jwtHelper).getUsernameFromToken(token);
         doReturn(Optional.empty()).when(userRepository).findByUsername(anyString());
         //then
         assertThrows(NotFoundException.class, () -> userService.getByAuthToken(token));
@@ -95,15 +95,15 @@ class UserServiceImplTest {
     void throwsExceptionWhenGettingUserByToken_AndPasswordFromTokenIsIncorrect() {
         //given
         User userThatHaveDiffPass = User.builder()
-                .username("Gilgamesh")
-                .password("Humbaba")
+                .username("QWERTY")
+                .password("asdf")
                 .build();
 
         //when
         doReturn(true).when(jwtHelper).validateToken(token);
-        doReturn("Gilgamesh").when(jwtHelper).getUsernameFromToken(token);
+        doReturn("QWERTY").when(jwtHelper).getUsernameFromToken(token);
         doReturn(Optional.of(userThatHaveDiffPass)).when(userRepository).findByUsername(anyString());
-        doReturn("Enkidu").when(jwtHelper).getPasswordFromToken(token);
+        doReturn("qwerty").when(jwtHelper).getPasswordFromToken(token);
         //then
         assertThrows(InvalidTokenException.class, () -> userService.getByAuthToken(token));
 
@@ -112,7 +112,7 @@ class UserServiceImplTest {
     @Test
     void canLogin() {
         //given
-        TokenDto expectedTokenDto = new TokenDto("Enuma Elish");
+        TokenDto expectedTokenDto = new TokenDto("123 321");
         //when
         doReturn(Optional.of(user)).when(userRepository).findByUsername(anyString());
         doReturn(expectedTokenDto.getToken()).when(jwtHelper).generateToken(user);
@@ -149,7 +149,7 @@ class UserServiceImplTest {
     @Test
     void isUpdateMethodReturningCorrectDto() {
         //given
-        TokenDto expectedTokenDto = new TokenDto("Enuma Elish");
+        TokenDto expectedTokenDto = new TokenDto("123 321");
         //when
         doReturn(expectedTokenDto.getToken()).when(jwtHelper).generateToken(user);
         TokenDto tokenDtoToAssert = userService.update(updateForm, user);
@@ -172,8 +172,8 @@ class UserServiceImplTest {
     void registerSaveProperEntityInDb() {
         //given
         User expectUser = User.builder()
-                .username("Gilgamesh")
-                .password("Enkidu")
+                .username("QWERTY")
+                .password("qwerty")
                 .role(Role.ROLE_USER)
                 .build();
         //when
@@ -188,7 +188,7 @@ class UserServiceImplTest {
     @Test
     void registerReturnCorrectDto() {
         //given
-        TokenDto expectedTokenDto = new TokenDto("Enuma Elish");
+        TokenDto expectedTokenDto = new TokenDto("123 321");
         //when
         doReturn(user).when(userRepository).save(user);
         doReturn(expectedTokenDto.getToken()).when(jwtHelper).generateToken(user);

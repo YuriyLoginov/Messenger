@@ -20,7 +20,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.HashSet;
 import java.util.Optional;
 
-import static org.assertj.core.api.Java6Assertions.assertThat;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doReturn;
@@ -89,8 +90,6 @@ public class MessageServiceImplTest {
         //when
         doReturn(Optional.empty()).when(roomRepository).findByName(anyString());
         //then
-        assertThrows(NotFoundException.class, () -> {
-            messageService.save(messageDto, user);
-        });
+        assertThrows(NotFoundException.class, () -> messageService.save(messageDto, user));
     }
 }

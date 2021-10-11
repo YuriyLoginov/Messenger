@@ -30,10 +30,6 @@ public class AuthTest {
     @Autowired
     private MockMvc mockMvc;
     @Autowired
-    private AuthenticationController authenticationController;
-    @Autowired
-    private ObjectMapper objectMapper;
-    @Autowired
     private UserRepo userRepository;
 
     @Test
