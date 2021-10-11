@@ -53,7 +53,7 @@ public class AuthTest {
     @Sql(value = {"create_test_user.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
     public void loginTest() throws Exception {
         //given
-        LoginForm loginForm = new LoginForm("Yuri", "yuri");
+        LoginForm loginForm = new LoginForm("QWERTY", "qwerty");
 
         TokenDto expectedToken = new TokenDto("eyJhbGciOiJIUzUxMiJ9.eyJ1c2VybmFtZSI6IkdpbGdhbWVzaCIsInBhc3N3b3JkIjoiRW5raWR1In0.rEpK6yd7ExiEIws56xn-B17LNnyXYTH-eHyVIgsACVAiuNM-K6goSsvBSsXBzHDt6aTRoop7yRVOexgzbMIJzw");
         //when

@@ -49,8 +49,8 @@ public class MessageServiceImplTest {
         messageDto = new MessageDto("message", "testRoom");
         user = User.builder()
                 .id(1L)
-                .username("Gilgamesh")
-                .password("Enkidu")
+                .username("QWERTY")
+                .password("qwerty")
                 .role(Role.ROLE_USER)
                 .rooms(new HashSet<>())
                 .build();

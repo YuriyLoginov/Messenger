@@ -48,8 +48,8 @@ class RoomServiceImplTest {
     void setUp() {
         user = User.builder()
                 .id(1L)
-                .username("Gilgamesh")
-                .password("Enkidu")
+                .username("QWERTY")
+                .password("qwerty")
                 .role(Role.ROLE_USER)
                 .build();
 
@@ -120,8 +120,8 @@ class RoomServiceImplTest {
                 .build();
         User notOwnerUser = User.builder()
                 .id(2L)
-                .username("Ninsun")
-                .password("Enkidu")
+                .username("fdgdgsadf")
+                .password("asdfsadsdf")
                 .role(Role.ROLE_USER)
                 .build();
         //when
