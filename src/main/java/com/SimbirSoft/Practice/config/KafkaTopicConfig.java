@@ -15,7 +15,7 @@ public class KafkaTopicConfig {
     @Bean
     public KafkaAdmin kafkaAdmin() {
         Map<String, Object> configs = new HashMap<>();
-        String bootstrapAddress = "localhost:29092";
+        String bootstrapAddress = "localhost:9092";
         configs.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
         return new KafkaAdmin(configs);
     }

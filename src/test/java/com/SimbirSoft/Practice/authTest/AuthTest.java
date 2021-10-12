@@ -1,5 +1,4 @@
 package com.SimbirSoft.Practice.authTest;
-import com.SimbirSoft.Practice.controller.AuthenticationController;
 import com.SimbirSoft.Practice.dto.user.LoginForm;
 import com.SimbirSoft.Practice.dto.user.RegisterForm;
 import com.SimbirSoft.Practice.dto.user.TokenDto;
