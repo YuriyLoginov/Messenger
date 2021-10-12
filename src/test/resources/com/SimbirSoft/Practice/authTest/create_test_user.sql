@@ -1,1 +1,1 @@
-insert into users(id, username, password) values (100, 'QWERTY', 'qwerty');
+insert into users(id, username, password, role) values (100, 'QWERTY', 'qwerty', 'ROLE_USER');

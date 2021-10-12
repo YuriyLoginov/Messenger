@@ -34,13 +34,13 @@ public class AuthTest {
     @Test
     public void registrationTest() throws Exception {
         //given
-        RegisterForm registerForm = new RegisterForm("QWERTY", "qwerty");
+        RegisterForm registerForm = new RegisterForm("Yuriy", "yuriy");
         //when
         mockMvc.perform(post("/register")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(registerForm)));
         //then
-        Assertions.assertThat(userRepository.findByUsername("QWERTY")).isPresent();
+        Assertions.assertThat(userRepository.findByUsername("Yuriy")).isPresent();
 
 
     }
@@ -50,7 +50,7 @@ public class AuthTest {
         //given
         LoginForm loginForm = new LoginForm("QWERTY", "qwerty");
 
-        TokenDto expectedToken = new TokenDto("eyJhbGciOiJIUzUxMiJ9.eyJ1c2VybmFtZSI6IkdpbGdhbWVzaCIsInBhc3N3b3JkIjoiRW5raWR1In0.rEpK6yd7ExiEIws56xn-B17LNnyXYTH-eHyVIgsACVAiuNM-K6goSsvBSsXBzHDt6aTRoop7yRVOexgzbMIJzw");
+        TokenDto expectedToken = new TokenDto("eyJhbGciOiJIUzUxMiJ9.eyJ1c2VybmFtZSI6IlFXRVJUWSIsInBhc3N3b3JkIjoicXdlcnR5In0.YUluJCWA_wn5cK9_DF_BB3S8zagEEAlE-ZI9bggoj1pI7tTvTDvFKJ9I-WmSgHk6TPe26CGZnYm1uIjMBWzK_A");
         //when
         this.mockMvc.perform(post("/auth")
                         .contentType(MediaType.APPLICATION_JSON)

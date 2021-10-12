@@ -25,14 +25,14 @@ class UserRepositoryTest {
     void findByUsername() {
         //given
         User user = User.builder()
-                .username("Nebuchadnezzar the Great")
-                .password("Babylon")
+                .username("ADMIN")
+                .password("admin")
                 .role(Role.ROLE_ADMIN)
                 .build();
 
         userRepository.save(user);
         //when
-        Optional<User> userUnderTest = userRepository.findByUsername("Nebuchadnezzar the Great");
+        Optional<User> userUnderTest = userRepository.findByUsername("Yuriy");
         //then
         assertEquals(user.getUsername(), userUnderTest.get().getUsername());
     }
