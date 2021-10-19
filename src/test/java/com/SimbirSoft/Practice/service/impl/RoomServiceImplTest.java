@@ -120,8 +120,8 @@ class RoomServiceImplTest {
                 .build();
         User notOwnerUser = User.builder()
                 .id(2L)
-                .username("asdfsadf")
-                .password("asdfasdf")
+                .username("QWERTY")
+                .password("qwerty")
                 .role(Role.ROLE_USER)
                 .build();
         //when
@@ -205,8 +205,8 @@ class RoomServiceImplTest {
                 .owner(user)
                 .build();
         User otherUser = User.builder()
-                .username("asdfasdf")
-                .password("asdfasdf")
+                .username("QWERTY")
+                .password("qwerty")
                 .role(Role.ROLE_USER)
                 .build();
         //when
@@ -248,8 +248,8 @@ class RoomServiceImplTest {
     void canAppropriateAddUserToRoom() {
         //given
         User userOwner = User.builder()
-                .username("asdfasdf")
-                .password("asdfasdf")
+                .username("QWERTY")
+                .password("qwerty")
                 .build();
         Room roomToAddUser = Room.builder()
                 .name("testRoom")
@@ -286,8 +286,8 @@ class RoomServiceImplTest {
     void throwsExceptionWhenAddingUserToRoom_AndUserIsAlreadyPresentInThatRoom() {
         //given
         User userOwner = User.builder()
-                .username("asdfasdf")
-                .password("asdfsadf")
+                .username("QWERTY")
+                .password("qwerty")
                 .build();
         Set<User> existingUsers = new HashSet<>();
         existingUsers.add(userOwner);

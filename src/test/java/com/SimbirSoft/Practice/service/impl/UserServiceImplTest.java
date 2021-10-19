@@ -96,7 +96,7 @@ class UserServiceImplTest {
         //given
         User userThatHaveDiffPass = User.builder()
                 .username("QWERTY")
-                .password("asdf")
+                .password("qwerty")
                 .build();
 
         //when
