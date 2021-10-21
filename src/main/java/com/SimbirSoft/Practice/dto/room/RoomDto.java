@@ -1,12 +1,12 @@
 package com.SimbirSoft.Practice.dto.room;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
 @Builder
+@Getter
+@Setter
 public class RoomDto {
     private String RoomName;
     private String owner;

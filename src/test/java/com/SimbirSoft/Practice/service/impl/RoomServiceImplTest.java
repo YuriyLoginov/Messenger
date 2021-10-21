@@ -41,6 +41,7 @@ class RoomServiceImplTest {
     private final RoomNameDto roomNameDto = new RoomNameDto();
     private RoomRenameDto roomRenameDto;
     private User user;
+    private Room room;
     private final ConnectToRoomDto connectToRoomDto = new ConnectToRoomDto();
 
 

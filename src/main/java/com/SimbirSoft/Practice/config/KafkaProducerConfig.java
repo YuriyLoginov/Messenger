@@ -1,7 +1,9 @@
 package com.SimbirSoft.Practice.config;
 
 import com.SimbirSoft.Practice.dto.message.MessageMetricsDto;
+import com.SimbirSoft.Practice.dto.user.UserDto;
 import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.common.protocol.types.Field;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +21,7 @@ public class KafkaProducerConfig {
     @Bean
     public ProducerFactory<String, MessageMetricsDto> producerFactory() {
         Map<String, Object> configProps = new HashMap<>();
-        String bootstrapAddress = "localhost:9092";
+        String bootstrapAddress = "localhost:2182";
         configProps.put(
                 ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,
                 bootstrapAddress);

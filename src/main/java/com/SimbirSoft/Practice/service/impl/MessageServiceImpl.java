@@ -25,9 +25,7 @@ public class MessageServiceImpl implements MessageService {
     @Override
     public void save(MessageDto messageDto, User user) {
         Optional<Room> roomToSendMessage = roomRepo.findByName(messageDto.getRoomName());
-        if (!roomToSendMessage.isPresent()) {
-            throw new NotFoundException("Комната с именем " + messageDto.getRoomName() + " не найдена");
-        }
+
         Message messageToSave = Message.builder()
                 .message(messageDto.getMessage())
                 .author(user)
